@@ -46,6 +46,13 @@ function generatePassword() {
   var confirmCapital = confirm("Would you like to include capital letters?");
   pwCriteria.includeUpper = confirmCapital;
   console.log(pwCriteria.includeUpper);
+
+  // ask if they want to include lowercase letters
+  var confirmLower = confirm("Would you like to include lower case letters?");
+  pwCriteria.includeLower = confirmLower;
+  console.log(pwCriteria.includeLower);
+
+
 };
 
 
