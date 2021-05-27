@@ -52,6 +52,10 @@ function generatePassword() {
   pwCriteria.includeLower = confirmLower;
   console.log(pwCriteria.includeLower);
 
+  // ask if they want to include numbers
+  var confirmNum = confirm("Would you like to include numbers?");
+  pwCriteria.includeNum = confirmNum;
+  console.log(pwCriteria.includeNum);
 
 };
 
@@ -77,6 +81,7 @@ var pwCriteria = {
   charAmount: 0,
   includeUpper: null,
   includeLower: null,
+  includeNum: null,
   includeSpecial: null
 }
 
