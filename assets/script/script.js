@@ -21,12 +21,6 @@ var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"
 var numericList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "=", ">", "<", "?", "@", "^", "_", "`", "{", "|", "{", "~"]
 
-// create an empty array to add generated password to
-var userPW = [];
-
-
-
-
 //create generate password function based on criteria in pseudo code
 
 function generatePassword() {
@@ -79,9 +73,9 @@ var pwCriteria = {
 }
 
 // create a function that pulls a random character from newly created array based on user's responses
-// create an empty array that adds the specific character arrays from above only if their pwCriteria === true
 
 function randomChar() {
+  // create an empty array that adds the specific character arrays from above only if their pwCriteria === true
   var pwCharArray = [];
 
   if (pwCriteria.includeUpper === true) {
@@ -100,8 +94,10 @@ function randomChar() {
     pwCharArray = pwCharArray.concat(specialChar);
   }
 
-  console.log(pwCharArray);
-  console.log(pwCharArray[59]);
+  // use math.random function to pick a random character from the array
+  var randomCharSelected = pwCharArray[Math.floor(Math.random() * pwCharArray.length)];
+
+  return randomCharSelected;
 
 }
 
