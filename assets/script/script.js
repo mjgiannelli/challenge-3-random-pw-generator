@@ -57,6 +57,11 @@ function generatePassword() {
   pwCriteria.includeNum = confirmNum;
   console.log(pwCriteria.includeNum);
 
+  // ask if they want to include special characters
+  var confirmSpecial = confirm("Would you like to include special characters?");
+  pwCriteria.includeSpecial = confirmSpecial;
+  console.log(pwCriteria.includeSpecial);
+
 };
 
 
