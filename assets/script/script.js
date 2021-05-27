@@ -20,7 +20,7 @@ var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numericList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var specialChar = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "=", ">", "<", "?", "@", "^", "_", "`", "{", "|", "{", "~"]
-
+var pwGenerated = [];
 //create generate password function based on criteria in pseudo code
 
 function generatePassword() {
@@ -58,9 +58,13 @@ function generatePassword() {
   console.log(pwCriteria.includeSpecial);
 
   // TODO check if the values all equal false - if so will rerun generate password
-  //TODO run a function to pull a random character over value in charAmount
-  randomChar();
+  // run the random character function over the value that user entered for charAmount
 
+  for (var i = 0; i < charAmount; i++) {
+    randomChar();
+  }
+
+  return pwGenerated.join("");
 };
 
 // create user object to hold answers to prompts to determine how to generate password
@@ -97,7 +101,7 @@ function randomChar() {
   // use math.random function to pick a random character from the array
   var randomCharSelected = pwCharArray[Math.floor(Math.random() * pwCharArray.length)];
 
-  return randomCharSelected;
+  return pwGenerated = pwGenerated.concat(randomCharSelected);
 
 }
 
@@ -107,6 +111,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
+
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
