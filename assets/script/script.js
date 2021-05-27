@@ -32,16 +32,17 @@ var userPW = [];
 function generatePassword() {
 
   // ask user to enter number of desired characters 8-128 
-  var charSelect = parseInt(prompt("How many characters would you like your PW to be? Please enter at least 8 and no more than 128."));
+  var charAmount = parseInt(prompt("How many characters would you like your PW to be? Please enter at least 8 and no more than 128."));
 
-  if (charSelect < 8 || charSelect > 128 || isNaN(charSelect) === true) {
+  if (charAmount < 8 || charAmount > 128 || isNaN(charAmount) === true) {
     alert("Invalid response. Please enter at least 8 but not more than 128.");
     return generatePassword();
   }
   else {
-    pwCriteria.charAmount = charSelect;
+    pwCriteria.charAmount = charAmount;
   }
 
+  // TODO create a function for this so if all equal false we can have the questions be asked again
   // ask if they want to include capital letters
   var confirmCapital = confirm("Would you like to include capital letters?");
   pwCriteria.includeUpper = confirmCapital;
@@ -62,11 +63,47 @@ function generatePassword() {
   pwCriteria.includeSpecial = confirmSpecial;
   console.log(pwCriteria.includeSpecial);
 
+  // TODO check if the values all equal false - if so will rerun generate password
+  //TODO run a function to pull a random character over value in charAmount
+  randomChar();
+
 };
 
+// create user object to hold answers to prompts to determine how to generate password
+var pwCriteria = {
+  charAmount: 0,
+  includeUpper: null,
+  includeLower: null,
+  includeNum: null,
+  includeSpecial: null
+}
 
+// create a function that pulls a random character from newly created array based on user's responses
+// create an empty array that adds the specific character arrays from above only if their pwCriteria === true
 
+function randomChar() {
+  var pwCharArray = [];
 
+  if (pwCriteria.includeUpper === true) {
+    pwCharArray = pwCharArray.concat(upperCase);
+  }
+
+  if (pwCriteria.includeLower === true) {
+    pwCharArray = pwCharArray.concat(lowerCase);
+  }
+
+  if (pwCriteria.includeNum === true) {
+    pwCharArray = pwCharArray.concat(numericList);
+  }
+
+  if (pwCriteria.includeSpecial === true) {
+    pwCharArray = pwCharArray.concat(specialChar);
+  }
+
+  console.log(pwCharArray);
+  console.log(pwCharArray[59]);
+
+}
 
 
 // Get references to the #generate element
@@ -81,14 +118,7 @@ function writePassword() {
 
 }
 
-// create user object to hold answers to prompts to determine how to generate password
-var pwCriteria = {
-  charAmount: 0,
-  includeUpper: null,
-  includeLower: null,
-  includeNum: null,
-  includeSpecial: null
-}
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
