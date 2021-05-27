@@ -43,20 +43,28 @@ function generatePassword() {
   }
 
   // ask if they want to include capital letters
+  var confirmCapital = confirm("Would you like to include capital letters?");
+  pwCriteria.includeUpper = confirmCapital;
+  console.log(pwCriteria.includeUpper);
+};
 
 
-  // Get references to the #generate element
-  var generateBtn = document.querySelector("#generate");
 
-  // Write password to the #password input
-  function writePassword() {
-    var password = generatePassword();
-    var passwordText = document.querySelector("#password");
 
-    passwordText.value = password;
 
-  }
+
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+
 }
+
 // create user object to hold answers to prompts to determine how to generate password
 var pwCriteria = {
   charAmount: 0,
