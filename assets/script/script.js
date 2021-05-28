@@ -26,7 +26,7 @@ var pwGenerated = [];
 function generatePassword() {
 
 
-  var charAmount = (prompt("How many characters would you like your PW to be? Please enter at least 8 and no more than 128."));
+  var charAmount = prompt("How many characters would you like your PW to be? Please enter at least 8 and no more than 128.");
 
   var placeHolder = document.querySelector("#password[placeholder]").textContent;
 
