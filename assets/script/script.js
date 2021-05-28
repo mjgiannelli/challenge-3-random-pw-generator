@@ -82,7 +82,7 @@ function promptUser() {
   pwCriteria.includeSpecial = confirmSpecial;
 
   // TODO check if the values all equal false - if so will rerun user prompts
-  if (pwCriteria.includeUpper === false && pwCriteria.includeUpper === false && pwCriteria.includeUpper === false && pwCriteria.includeUpper === false) {
+  if (pwCriteria.includeUpper === false && pwCriteria.includeLower === false && pwCriteria.includeNum === false && pwCriteria.includeSpecial === false) {
     alert("You selected to not include any characters! Try again! ");
     return promptUser();
   }
