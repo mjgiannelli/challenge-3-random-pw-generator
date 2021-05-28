@@ -39,7 +39,7 @@ function generatePassword() {
   }
   // ask user to enter number of desired characters 8-128 
   if (charAmount < 8 || charAmount > 128 || isNaN(charAmount) === true) {
-    console.log(charAmount);
+
     alert("Invalid response. Please enter at least 8 but not more than 128.");
     return generatePassword();
   }
