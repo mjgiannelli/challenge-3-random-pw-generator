@@ -26,10 +26,17 @@ var pwGenerated = [];
 function generatePassword() {
 
 
-
-  // ask user to enter number of desired characters 8-128 
   var charAmount = parseInt(prompt("How many characters would you like your PW to be? Please enter at least 8 and no more than 128."));
+  var placeHolder = document.querySelector("#password[placeholder]").textContent
 
+  // allow user to cancel out of generate password prompt. If previous password was generated- keep on screen.
+  if (!charAmount) {
+    if (pwGenerated) {
+      return pwGenerated.join("");
+    }
+    return placeHolder;
+  }
+  // ask user to enter number of desired characters 8-128 
   if (charAmount < 8 || charAmount > 128 || isNaN(charAmount) === true) {
     alert("Invalid response. Please enter at least 8 but not more than 128.");
     return generatePassword();
