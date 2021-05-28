@@ -45,7 +45,24 @@ function generatePassword() {
     pwCriteria.charAmount = charAmount;
   }
 
-  // TODO create a function for this so if all equal false we can have the questions be asked again
+  //TODO add prompt function
+  promptUser();
+
+  //check to see if the value of pwGenerated contains letters - if so reset the value to an empty array
+  if (pwGenerated) {
+    pwGenerated = [];
+    // run the random character function over the value that user entered for charAmount
+    for (var i = 0; i < charAmount; i++) {
+      randomChar();
+    }
+  }
+  // returns the generated password without the commas included
+  return pwGenerated.join("");
+};
+
+// TODO create a function for this so if all equal false we can have the questions be asked again
+function promptUser() {
+
   // ask if they want to include capital letters
   var confirmCapital = confirm("Would you like to include capital letters?");
   pwCriteria.includeUpper = confirmCapital;
@@ -62,19 +79,13 @@ function generatePassword() {
   var confirmSpecial = confirm("Would you like to include special characters?");
   pwCriteria.includeSpecial = confirmSpecial;
 
-  // TODO check if the values all equal false - if so will rerun generate password
-
-  //check to see if the value of pwGenerated contains letters - if so reset the value to an empty array
-  if (pwGenerated) {
-    pwGenerated = [];
-    // run the random character function over the value that user entered for charAmount
-    for (var i = 0; i < charAmount; i++) {
-      randomChar();
-    }
+  // TODO check if the values all equal false - if so will rerun user prompts
+  if (pwCriteria.includeUpper === false && pwCriteria.includeUpper === false && pwCriteria.includeUpper === false && pwCriteria.includeUpper === false) {
+    alert("You selected to not include any characters! Try again! ");
+    return promptUser();
   }
-  // returns the generated password without the commas included
-  return pwGenerated.join("");
-};
+}
+
 
 // create user object to hold answers to prompts to determine how to generate password
 var pwCriteria = {
@@ -126,8 +137,6 @@ function writePassword() {
   passwordText.value = password;
 
 }
-
-
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
