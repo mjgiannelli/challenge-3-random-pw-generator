@@ -19,11 +19,13 @@
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numericList = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var specialChar = [" ", "!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "=", ">", "<", "?", "@", "^", "_", "`", "{", "|", "{", "~"]
+var specialChar = ["!", '"', "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "=", ">", "<", "?", "@", "^", "_", "`", "{", "|", "{", "~"]
 var pwGenerated = [];
 //create generate password function based on criteria in pseudo code
 
 function generatePassword() {
+
+
 
   // ask user to enter number of desired characters 8-128 
   var charAmount = parseInt(prompt("How many characters would you like your PW to be? Please enter at least 8 and no more than 128."));
@@ -40,30 +42,30 @@ function generatePassword() {
   // ask if they want to include capital letters
   var confirmCapital = confirm("Would you like to include capital letters?");
   pwCriteria.includeUpper = confirmCapital;
-  console.log(pwCriteria.includeUpper);
 
   // ask if they want to include lowercase letters
   var confirmLower = confirm("Would you like to include lower case letters?");
   pwCriteria.includeLower = confirmLower;
-  console.log(pwCriteria.includeLower);
 
   // ask if they want to include numbers
   var confirmNum = confirm("Would you like to include numbers?");
   pwCriteria.includeNum = confirmNum;
-  console.log(pwCriteria.includeNum);
 
   // ask if they want to include special characters
   var confirmSpecial = confirm("Would you like to include special characters?");
   pwCriteria.includeSpecial = confirmSpecial;
-  console.log(pwCriteria.includeSpecial);
 
   // TODO check if the values all equal false - if so will rerun generate password
-  // run the random character function over the value that user entered for charAmount
 
-  for (var i = 0; i < charAmount; i++) {
-    randomChar();
+  //check to see if the value of pwGenerated contains letters - if so reset the value to an empty array
+  if (pwGenerated) {
+    pwGenerated = [];
+    // run the random character function over the value that user entered for charAmount
+    for (var i = 0; i < charAmount; i++) {
+      randomChar();
+    }
   }
-
+  // returns the generated password without the commas included
   return pwGenerated.join("");
 };
 
@@ -104,7 +106,6 @@ function randomChar() {
   return pwGenerated = pwGenerated.concat(randomCharSelected);
 
 }
-
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
