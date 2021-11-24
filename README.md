@@ -10,4 +10,4 @@
 ![PW Generator](assets/images/pw-generator.png)
 
 ## Link to Portfolio Website
-[PW Generator Deployed Website](https://mjgiannelli.github.io/challenge-3-random-pw-generator/)
+[PW Generator Deployed Website](https://mjgiannelli.github.io/random-pw-generator/)
